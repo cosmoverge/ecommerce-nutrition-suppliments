@@ -153,14 +153,14 @@ export default function ProductListScreen() {
         </Col>
         <Col
           className="col text-end d-flex justify-content-end"
-          style={{ gap: '10px' }}
+          style={{ gap: '10px', width: '187px' }}
         >
-          <div>
+          <div className="product-btn">
             <Button type="button" onClick={createHandler}>
               Add Product
             </Button>
           </div>
-          <div>
+          <div className="product-btn">
             <Button type="button" onClick={createCategoryHandler}>
               Create Category
             </Button>
