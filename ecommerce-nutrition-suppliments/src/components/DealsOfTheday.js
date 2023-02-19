@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useContext, useEffect, useState } from 'react';
-import { Button, Card, Col } from 'react-bootstrap';
+import { Button, Card, Col, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { Modal, ModalBody, ModalHeader } from 'reactstrap';
@@ -66,7 +66,7 @@ export default function DealsOfTheday(props) {
           </Link> */}
         </div>
       </div>
-      <div style={{ display: 'flex' }}>
+      <Row className="justify-content-evenly">
         {props.products.map((product) =>
           (product.productDiscountedPrice / product.price) * 100 >= 15 ? (
             <Col
@@ -192,7 +192,7 @@ export default function DealsOfTheday(props) {
             </Col>
           ) : null
         )}
-      </div>
+      </Row>
     </>
   );
 }

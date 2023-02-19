@@ -188,7 +188,7 @@ export default function ProductScreen() {
                   </Col>
                 ))} */}
       </Row>
-      <Row>
+      <Row className="products-row">
         <h1>{product.name} </h1>
         <Col md={12} style={{ display: 'flex' }}>
           {console.log('selected Image', selectedImage)}

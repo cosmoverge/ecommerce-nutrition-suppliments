@@ -52,12 +52,11 @@ export default function SigninScreen() {
         <title>Sign In</title>
       </Helmet>
 
-      <h1 className="my-3" style={{ marginLeft: '280px' }}>
-        Sign In
-      </h1>
+      <h1 className="signin-heading">Sign In</h1>
       <Form
+        className="signin-form"
         onSubmit={submitHandler}
-        style={{ width: '350px', marginLeft: '20%' }}
+        // style={{ width: '350px', marginLeft: '20%' }}
       >
         <Form.Group className="mb-3" controlId="email">
           <Form.Label>Email</Form.Label>

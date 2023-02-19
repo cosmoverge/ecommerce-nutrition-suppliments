@@ -154,7 +154,7 @@ export default function SlideListScreen() {
             <thead>
               <tr>
                 <th>IMAGE</th>
-                <th>ID</th>
+                {/* <th>ID</th> */}
                 <th>NAME</th>
                 <th>CATEGORY</th>
                 <th>BRAND</th>
@@ -171,7 +171,7 @@ export default function SlideListScreen() {
                       alt=""
                     />
                   </td>
-                  <td>{product._id}</td>
+                  {/* <td>{product._id}</td> */}
                   <td>{product.name}</td>
                   <td>{product.category}</td>
                   {/* <td>{product.productDiscountedPrice}</td> */}

@@ -145,124 +145,125 @@ function App() {
                 </Navbar.Brand>
               </LinkContainer>
 
-              <Navbar.Toggle aria-controls="basic-navbar-nav" />
-              <Navbar.Collapse id="basic-navbar-nav">
-                <div
-                  style={{
-                    alignItem: 'center',
-                    paddingLeft: '150px',
+              {/* <Navbar.Toggle aria-controls="basic-navbar-nav" />
+              <Navbar.Collapse id="basic-navbar-nav"> */}
+              <div
+                className="searchBox"
+                style={
+                  {
+                    // alignItem: 'center',
+                    // paddingLeft: '9.4rem',
                     // width: '600px',
-                  }}
-                >
-                  <SearchBox />
-                </div>
-                <Nav
-                  className="me-auto  w-100  justify-content-end"
-                  style={{ display: 'inline-grid' }}
-                >
-                  {userInfo ? (
-                    <span
+                  }
+                }
+              >
+                <SearchBox />
+              </div>
+              <Nav
+                className="me-auto  w-100  justify-content-end"
+                style={{ display: 'inline-grid' }}
+              >
+                {userInfo ? (
+                  <span
+                    style={{
+                      color: 'wheat',
+                      display: 'flex',
+                      flexDirection: ' row-reverse',
+                      height: ' 30px',
+                      width: 'auto',
+                    }}
+                  >
+                    <a
+                      href="#signout"
                       style={{
-                        color: 'wheat',
-                        display: 'flex',
-                        flexDirection: ' row-reverse',
-                        height: ' 30px',
+                        // marginRight: '160px',
+                        marginTop: '5px',
+                        textDecoration: 'none',
+                        color: '#736a6a',
+                        fontSize: '15px',
                         width: 'auto',
+                        marginRight: '100px',
+                      }}
+                      onClick={signoutHandler}
+                    >
+                      Sign Out
+                    </a>
+                  </span>
+                ) : (
+                  <span
+                    style={{
+                      color: 'wheat',
+                      display: 'flex',
+                      flexDirection: ' row-reverse',
+                      height: ' 30px',
+                      width: 'auto',
+                    }}
+                  >
+                    {' '}
+                    <a
+                      href="/signin"
+                      style={{
+                        // marginRight: '160px',
+                        marginTop: '5px',
+                        textDecoration: 'none',
+                        color: '#736a6a',
+                        fontSize: '15px',
+                        width: 'auto',
+                        marginRight: '100px',
                       }}
                     >
-                      <a
-                        href="#signout"
-                        style={{
-                          // marginRight: '160px',
-                          marginTop: '5px',
-                          textDecoration: 'none',
-                          color: '#736a6a',
-                          fontSize: '15px',
-                          width: 'auto',
-                          marginRight: '100px',
-                        }}
-                        onClick={signoutHandler}
-                      >
-                        Sign Out
-                      </a>
-                    </span>
-                  ) : (
-                    <span
-                      style={{
-                        color: 'wheat',
-                        display: 'flex',
-                        flexDirection: ' row-reverse',
-                        height: ' 30px',
-                        width: 'auto',
-                      }}
-                    >
-                      {' '}
-                      <a
-                        href="/signin"
-                        style={{
-                          // marginRight: '160px',
-                          marginTop: '5px',
-                          textDecoration: 'none',
-                          color: '#736a6a',
-                          fontSize: '15px',
-                          width: 'auto',
-                          marginRight: '100px',
-                        }}
-                      >
-                        SignIn
-                      </a>
-                    </span>
-                  )}
+                      SignIn
+                    </a>
+                  </span>
+                )}
 
-                  {userInfo?.isAdmin ? null : (
-                    <div
-                      style={{
-                        borderRadius: '10px',
-                        background: '#75b510',
-                        width: '120px',
-                        height: '60px',
-                        padding: '17px',
-                        marginRight: '60px',
-                        marginTop: '10px',
-                      }}
+                {userInfo?.isAdmin ? null : (
+                  <div
+                    style={{
+                      borderRadius: '0.7rem',
+                      background: '#75b510',
+                      width: '7.5rem',
+                      height: '3.75rem',
+                      padding: '1rem',
+                      marginRight: '3.75rem',
+                      marginTop: '0.7rem',
+                    }}
+                  >
+                    <a
+                      href="/cart"
+                      className="nav-a"
+                      style={{ color: 'white' }}
                     >
-                      <a
-                        href="/cart"
-                        className="nav-a"
+                      <i
+                        className="fas fa-shopping-cart"
                         style={{ color: 'white' }}
-                      >
-                        <i
-                          className="fas fa-shopping-cart"
-                          style={{ color: 'white' }}
-                        ></i>
-                        <span style={{ color: 'white', fontSize: '17px' }}>
-                          {' '}
-                          Cart
-                        </span>{' '}
-                        {
-                          cart.cartItems.length > 0 && (
-                            // (userInfo ? (
+                      ></i>
+                      <span style={{ color: 'white', fontSize: '17px' }}>
+                        {' '}
+                        Cart
+                      </span>{' '}
+                      {
+                        cart.cartItems.length > 0 && (
+                          // (userInfo ? (
 
-                            <Badge pill bg="danger">
-                              {cart.cartItems.reduce(
-                                (a, c) => a + c.quantity,
-                                0
-                              )}
-                            </Badge>
-                          )
-                          // ) : null)
-                        }
-                      </a>
-                      {/* // )} */}
-                    </div>
-                  )}
-                </Nav>
-              </Navbar.Collapse>
+                          <Badge pill bg="danger">
+                            {cart.cartItems.reduce((a, c) => a + c.quantity, 0)}
+                          </Badge>
+                        )
+                        // ) : null)
+                      }
+                    </a>
+                    {/* // )} */}
+                  </div>
+                )}
+              </Nav>
+              {/* </Navbar.Collapse> */}
             </Container>
           </Navbar>
         </header>
         <div className="category-div">
           <div
+            className="draging"
             style={{
               // width: '100% !important',
               width: '80%',
@@ -287,53 +288,68 @@ function App() {
                 /* margin-left: auto; */
                 /* padding-right: 20px; */
                 width: '100%',
-                display: 'flex',
+                display: 'contents',
                 flexDirection: 'row-reverse',
                 paddingRight: '100px',
               }}
             >
               {userInfo && userInfo?.isAdmin ? (
-                <div>
-                  <a className="header-a" href="/">
-                    Home
-                  </a>
-                  <a className="header-a" href="/admin/dashboard">
-                    Dashboard
-                  </a>
-                  <a className="header-a" href="/admin/products">
-                    Products
-                  </a>
-                  <a className="header-a" href="/admin/sliders">
-                    Sliders
-                  </a>
-                  <a className="header-a" href="/admin/orders">
-                    Orders
-                  </a>
-                  <a className="header-a" href="/admin/users">
-                    Users
-                  </a>
-                  <a className="header-a" href="/profile">
-                    Admin Profile
-                  </a>
-                </div>
+                <Navbar
+                  // variant="dark"
+                  style={{
+                    // backgroundColor: '#2c2626',
+                    display: 'block',
+                    // overflowX: 'auto',
+                    // padding: '20px',
+                  }}
+                  expand="lg"
+                >
+                  <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                  <Navbar.Collapse id="basic-navbar-nav">
+                    <a className="header-a" href="/">
+                      Home
+                    </a>
+                    <a className="header-a" href="/admin/dashboard">
+                      Dashboard
+                    </a>
+                    <a className="header-a" href="/admin/products">
+                      Products
+                    </a>
+                    <a className="header-a" href="/admin/sliders">
+                      Sliders
+                    </a>
+                    <a className="header-a" href="/admin/orders">
+                      Orders
+                    </a>
+                    <a className="header-a" href="/admin/users">
+                      Users
+                    </a>
+                    <a className="header-a" href="/profile">
+                      Admin Profile
+                    </a>
+                  </Navbar.Collapse>
+                </Navbar>
               ) : (
-                <div>
-                  <a className="header-a" href="/">
-                    Home
-                  </a>
-                  <a className="header-a" href="/orderhistory">
-                    Order History
-                  </a>
-                  <a className="header-a" href="/profile">
-                    User Profile
-                  </a>
-                  <a className="header-a" href="">
-                    Contact Us
-                  </a>
-                  <a className="header-a" href="">
-                    About Us
-                  </a>
-                </div>
+                <Navbar expand="lg">
+                  <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                  <Navbar.Collapse id="basic-navbar-nav">
+                    <a className="header-a" href="/">
+                      Home
+                    </a>
+                    <a className="header-a" href="/orderhistory">
+                      Order History
+                    </a>
+                    <a className="header-a" href="/profile">
+                      User Profile
+                    </a>
+                    <a className="header-a" href="">
+                      Contact Us
+                    </a>
+                    <a className="header-a" href="">
+                      About Us
+                    </a>
+                  </Navbar.Collapse>
+                </Navbar>
               )}
             </div>
           </div>
@@ -374,99 +390,63 @@ function App() {
                   : '',
             }}
           >
-            <div
-              style={{
-                color: 'white',
-                background:
-                  'linear-gradient(rgb(63, 55, 55) 0%, rgb(46, 39, 39) 100%)',
-                textAlign: 'center',
-                height: '45px',
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-                borderRight: '1px solid black',
-                fontSize: '1.3rem',
-                // fontFamily: 'serif',
-                fontWeight: 400,
-                // color: 'red',
-                // height:
-              }}
-            >
-              Categories
-            </div>
-            <ListGroup>
-              {categories?.map((category, i) => (
-                <NavLink
-                  to={`/products/categories?type=category&name=${category.slug}`}
-                  style={{
-                    textDecoration: 'none',
-                    color: 'black',
-                    fontSize: '18px',
-                  }}
-                >
-                  <ListGroup.Item
-                    key={category.slug}
-                    style={{ color: 'white' }}
+            <Navbar expand="lg">
+              <Navbar.Toggle aria-controls="basic-navbar-nav" />
+              <Navbar.Collapse
+                id="basic-navbar-nav"
+                // style={{ marginLeft: '-12px' }}
+              >
+                <ListGroup>
+                  <div
+                    style={{
+                      color: 'white',
+                      background:
+                        'linear-gradient(rgb(63, 55, 55) 0%, rgb(46, 39, 39) 100%)',
+                      textAlign: 'center',
+                      height: '38px',
+                      display: 'flex',
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                      borderRight: '1px solid black',
+                      fontSize: '1.3rem',
+                      // fontFamily: 'serif',
+                      fontWeight: 400,
+                      // color: 'red',
+                      // height:
+                    }}
                   >
-                    {category.name}
-                  </ListGroup.Item>
-                </NavLink>
-              ))}
-              <div class="widget widget_banner" style={{ paddingTop: '30px' }}>
-                <img
-                  src="//cdn.shopify.com/s/files/1/0432/0609/t/3/assets/custom_banner_img.jpg?v=109058294885636396901397135061"
-                  alt=""
-                  style={{ width: '100%' }}
-                />
-              </div>
-              {/* <div
-                className="marketing-animation"
-                style={{
-                  width: '25%',
-                  height: '50px',
-                  border: '1px solid black',
-                  position: 'fixed',
-                  bottom: '1px',
-                  left: '20px',
-                  // transform: 'translate',
-                  backgroundColor: 'lightblue',
-                }}
-              > */}
-              {/* <marquee direction="up" scrollamount="1">
-                  Multi has purchased $1099 worth products
-                </marquee>
-                <marquee direction="up" scrollamount="1">
-                  Naveen has purchased $1099 worth products
-                </marquee> */}
-              {/* <marquee direction="up" scrollamount="20">
-                  Shamanth has purchased $1099 worth products
-                </marquee>
-                <marquee direction="up" scrollamount="50">
-                  Harshith has purchased $1099 worth products
-                </marquee>
-                <marquee direction="up" scrollamount="75">
-                  Harsha has purchased $1099 worth products
-                </marquee>
-                <marquee direction="up" scrollamount="110">
-                  Sangeetha has purchased $1099 worth products
-                </marquee>
-                <marquee direction="up" scrollamount="130">
-                  Chida has purchased $1099 worth products
-                </marquee>
-                <marquee direction="up" scrollamount="150">
-                  Rohith has purchased $1099 worth products
-                </marquee>
-                <marquee direction="up" scrollamount="170">
-                  Nithan has purchased $1099 worth products
-                </marquee>
-                <marquee direction="up" scrollamount="200">
-                  Mithun has purchased $1099 worth products
-                </marquee>
-                <marquee direction="up" scrollamount="220">
-                  Mohan has purchased $1099 worth products
-                </marquee> */}
-              {/* </div> */}
-            </ListGroup>
+                    Categories
+                  </div>
+                  {categories?.map((category, i) => (
+                    <NavLink
+                      to={`/products/categories?type=category&name=${category.slug}`}
+                      style={{
+                        textDecoration: 'none',
+                        color: 'black',
+                        fontSize: '18px',
+                      }}
+                    >
+                      <ListGroup.Item
+                        key={category.slug}
+                        style={{ color: 'white' }}
+                      >
+                        {category.name}
+                      </ListGroup.Item>
+                    </NavLink>
+                  ))}
+                  <div
+                    class="widget widget_banner"
+                    style={{ paddingTop: '30px' }}
+                  >
+                    <img
+                      src="//cdn.shopify.com/s/files/1/0432/0609/t/3/assets/custom_banner_img.jpg?v=109058294885636396901397135061"
+                      alt=""
+                      style={{ width: '100%' }}
+                    />
+                  </div>
+                </ListGroup>
+              </Navbar.Collapse>
+            </Navbar>
             {/* <div class="widget widget_banner" style={{ paddingTop: '30px' }}>
               <img
                 src="//cdn.shopify.com/s/files/1/0432/0609/t/3/assets/custom_banner_img.jpg?v=109058294885636396901397135061"
@@ -489,10 +469,12 @@ function App() {
           {/* )} */}
           <Container
             className="mt-3"
-            style={{
-              // marginRight: '77px',
-              width: '80%',
-            }}
+            style={
+              {
+                // marginRight: '77px',
+                // width: '80%',
+              }
+            }
           >
             <Routes>
               <Route
