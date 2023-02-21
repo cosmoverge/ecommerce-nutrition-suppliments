@@ -72,7 +72,7 @@ export default function ShippingAddressScreen() {
 
   return (
     <div>
-      <CheckoutSteps step1 step2 step3></CheckoutSteps>
+      <CheckoutSteps step2></CheckoutSteps>
       <div className="container small-container">
         <Helmet>
           <title>Shipping Address</title>

@@ -662,8 +662,8 @@ input[type='number']::-webkit-outer-spin-button {
   th,
   thead,
   tr {
-    font-size: 7px;
-    border-width: 1px !important;
+    font-size: 6.3px;
+    border-width: 0.3px !important;
   }
   .table > :not(caption) > * > * {
     padding: 5px 0px !important;
@@ -685,23 +685,29 @@ input[type='number']::-webkit-outer-spin-button {
     display: block;
   }
   .signin-heading {
-    margin-left: 0px;
+    margin-left: 33px;
   }
   .signin-form {
     width: 200px;
-    margin-left: 20%;
+    margin-left: -10%;
   }
   .product-btn {
     width: inherit !important;
   }
   .me-auto {
-    padding-right: 50px;
+    padding-right: 31px;
   }
   .headerText {
     padding-right: 70px;
   }
   .move-heading {
     display: flex;
+  }
+  .quantityAlign {
+    margin-left: 95px;
+  }
+  .continueShopingButtons {
+    margin: 10px 0 0px 65px;
   }
   /* width: max-content */
 }

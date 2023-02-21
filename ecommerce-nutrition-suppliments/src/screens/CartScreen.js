@@ -194,53 +194,55 @@ export default function AddToCart() {
                       ></img>{' '}
                       <Link to={`/product/${item.slug}`}>{item.name}</Link>
                     </Col>
-                    <Col md={4}>
-                      <Button
-                        onClick={() => {
-                          // let qnty = quantity + 1;
-                          updateCartHandler(item, item.quantity - 1);
-                        }}
-                        variant="light"
-                        disabled={quantity === 1}
-                      >
-                        <i className="fas fa-minus-circle"></i>
-                      </Button>{' '}
-                      <span>{item.quantity}</span>{' '}
-                      <Button
-                        variant="light"
-                        onClick={() =>
-                          updateCartHandler(item, item.quantity + 1)
-                        }
-                        disabled={quantity === item.countInStock}
-                      >
-                        <i className="fas fa-plus-circle"></i>
-                      </Button>
-                    </Col>
-                    <Col md={3}>
-                      Rs.{item.price}
-                      <div>
-                        <select
-                          style={{ fontSize: '13px' }}
-                          defaultValue=""
-                          onChange={(e) => handleChange(item, e.target.value)}
+                    <div className="quantityAlign">
+                      <Col md={4}>
+                        <Button
+                          onClick={() => {
+                            // let qnty = quantity + 1;
+                            updateCartHandler(item, item.quantity - 1);
+                          }}
+                          variant="light"
+                          disabled={quantity === 1}
                         >
-                          <option value="">quantity</option>
-                          <option value="10">10</option>
-                          <option value="50">50</option>
-                          <option value="100">100</option>
-                          <option value="150">150</option>
-                          <option value="180">180</option>
-                        </select>
-                      </div>
-                    </Col>
-                    <Col md={2}>
-                      <Button
-                        onClick={() => removeItemHandler(item)}
-                        variant="light"
-                      >
-                        <i className="fas fa-trash"></i>
-                      </Button>
-                    </Col>
+                          <i className="fas fa-minus-circle"></i>
+                        </Button>{' '}
+                        <span>{item.quantity}</span>{' '}
+                        <Button
+                          variant="light"
+                          onClick={() =>
+                            updateCartHandler(item, item.quantity + 1)
+                          }
+                          disabled={quantity === item.countInStock}
+                        >
+                          <i className="fas fa-plus-circle"></i>
+                        </Button>
+                      </Col>
+                      <Col md={3}>
+                        Rs.{item.price}
+                        <div>
+                          <select
+                            style={{ fontSize: '13px' }}
+                            defaultValue=""
+                            onChange={(e) => handleChange(item, e.target.value)}
+                          >
+                            <option value="">quantity</option>
+                            <option value="10">10</option>
+                            <option value="50">50</option>
+                            <option value="100">100</option>
+                            <option value="150">150</option>
+                            <option value="180">180</option>
+                          </select>
+                        </div>
+                      </Col>
+                      <Col md={2}>
+                        <Button
+                          onClick={() => removeItemHandler(item)}
+                          variant="light"
+                        >
+                          <i className="fas fa-trash"></i>
+                        </Button>
+                      </Col>
+                    </div>
                   </Row>
                 </ListGroup.Item>
               ))}
