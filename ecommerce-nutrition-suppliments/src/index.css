@@ -694,5 +694,14 @@ input[type='number']::-webkit-outer-spin-button {
   .product-btn {
     width: inherit !important;
   }
+  .me-auto {
+    padding-right: 50px;
+  }
+  .headerText {
+    padding-right: 70px;
+  }
+  .move-heading {
+    display: flex;
+  }
   /* width: max-content */
 }

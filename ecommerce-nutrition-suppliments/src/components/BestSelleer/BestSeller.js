@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useReducer, useState } from 'react';
 import { Button, Card } from 'react-bootstrap';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -10,11 +10,28 @@ import axios from 'axios';
 import { Modal, ModalBody, ModalHeader } from 'reactstrap';
 import CartScreen from '../../screens/CartScreen';
 
+const reducer = (state, action) => {
+  switch (action.type) {
+    case 'FETCH_REQUEST':
+      return { ...state, loading: true };
+    case 'FETCH_SUCCESS':
+      return { ...state, products: action.payload, loading: false };
+    case 'FETCH_FAIL':
+      return { ...state, loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
+
 export default function BestSeller(props) {
-  const { state, dispatch: ctxDispatch } = useContext(Store);
   const [show, setShow] = useState(3);
   const [modal, setModal] = useState(false);
-
+  const { getInitialValues, state, dispatch: ctxDispatch } = useContext(Store);
+  const [{ loading, error, products }, dispatch] = useReducer(reducer, {
+    products: [],
+    loading: true,
+    error: '',
+  });
   const {
     userInfo,
     cart: { cartItems },
@@ -24,7 +41,7 @@ export default function BestSeller(props) {
   const addToCartHandler = async (item) => {
     const existItem = cartItems.find((x) => x._id === props.product._id);
     const quantity = existItem ? existItem.quantity + 1 : 1;
-    const { data } = await axios.get(`/api/products/${item._id}`);
+    const { data } = await axios.get(`/api/products/bestseller/${item._id}`);
     if (data.countInStock < quantity) {
       window.alert('Sorry. Product is out of stock');
       return;
@@ -66,24 +83,24 @@ export default function BestSeller(props) {
         </div>
         <h2>Best Sellers</h2>
         <div className="viweAll">
-          {/* <Link
+          <Link
             style={{
               display: 'flex',
               flexDirection: 'row-reverse',
               // marginBottom: '2%',
               fontSize: '18px',
             }}
-            to=""
+            to="/allBestSeller"
             // onClick={() => loadMore()}
           >
             View all
-          </Link> */}
+          </Link>
         </div>
       </div>
       {/* <h2 className="page-heading">Best Sellers</h2> */}
 
       <Row className="justify-content-evenly">
-        {props.product.map((product) =>
+        {products.map((product) =>
           product.rating >= 3 ? (
             <Col
               key={product.slug}

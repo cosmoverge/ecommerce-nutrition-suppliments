@@ -52,6 +52,7 @@ import BlackFridaySale from './components/Black-friday-sale/BlackFridaySale';
 import ViewAllProducts from './screens/ViewAllProducts';
 import { getError } from './utils';
 import SignUpInfo from './screens/SignUpInfo';
+import ViewBestSellerScreen from './screens/ViewBestSellerScreen';
 
 function App() {
   const {
@@ -128,22 +129,24 @@ function App() {
             expand="lg"
           >
             <Container>
-              <img
-                src="//cdn.shopify.com/s/files/1/0432/0609/t/3/assets/logo.png?v=3239645435533822301397117626"
-                alt="Nutrition supplements"
-              ></img>
-              <LinkContainer to="/">
-                <Navbar.Brand>
-                  <div className="headerText">
-                    <span className="headericon">RX</span>
-                    <span className="subheadericon">
-                      MEDICINE
-                      <br height="0px" />
-                      ONLINE
-                    </span>
-                  </div>
-                </Navbar.Brand>
-              </LinkContainer>
+              <div className="move-heading">
+                <img
+                  src="//cdn.shopify.com/s/files/1/0432/0609/t/3/assets/logo.png?v=3239645435533822301397117626"
+                  alt="Nutrition supplements"
+                ></img>
+                <LinkContainer to="/">
+                  <Navbar.Brand>
+                    <div className="headerText">
+                      <span className="headericon">RX</span>
+                      <span className="subheadericon">
+                        MEDICINE
+                        <br height="0px" />
+                        ONLINE
+                      </span>
+                    </div>
+                  </Navbar.Brand>
+                </LinkContainer>
+              </div>
 
               {/* <Navbar.Toggle aria-controls="basic-navbar-nav" />
               <Navbar.Collapse id="basic-navbar-nav"> */}
@@ -538,6 +541,10 @@ function App() {
                 }
               />
               <Route path="/allProducts" element={<ViewAllProducts />}></Route>
+              <Route
+                path="/allBestSeller"
+                element={<ViewBestSellerScreen />}
+              ></Route>
               {/* slide Route */}
               <Route
                 path="/slider/:sliderID"
